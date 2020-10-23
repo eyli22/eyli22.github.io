@@ -1,0 +1,144 @@
+[meta title:"TB Narrative Visualization" description:"Short description of your project" /]
+
+[Header
+  fullWidth:true
+  title:"TB Narrative Visualization"
+  author:"Eric Li, Dong Fang, Mahalakshmi Sundaresan"
+  authorLink:"https://idyll-lang.org"
+  date:`(new Date()).toDateString()`
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+[data name:"TB" source:"TB_Burden_Country.csv"  /]
+
+// [Table data:TB /]
+
+
+// Visualization 1
+
+U.S. TB Prevalence (1990-2013)
+To understand trends from a global scale we first look at TB in various cases of developed and developing countries. A case of the well-developed is the U.S.
+We look at the estimated prevalence of TB of all forms here
+[var name:"year" value:1990 /]
+
+[derived name:"US" value:`TB.filter(c => (c.Country ==="United States of America" && c.Year === year))` /]
+
+// [Table data:US /]
+
+[Range value:year min:1990 max:2013 /]
+
+[IdyllVegaLite data:US spec:`{
+  width: 500,
+  mark: "point",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated prevalence of TB (all forms)", type: "quantitative", scale: { domain: [0, 40000] } }
+  }
+}` /]
+
+// Visualization 2
+U.S. Estimated # of deaths from TB : all forms, excluding HIV (1990-2013)
+After seeing the prevalence now we look at the estimated deaths from TB all forms in U.S.
+//Estimated number of deaths from TB (all forms, excluding HIV)
+
+[var name:"year1" value:1990 /]
+
+[derived name:"US2" value:`TB.filter(c => (c.Country ==="United States of America" && (c.Year === year1)))` /]
+
+[Range value:year1 min:1990 max:2013 /]
+
+[IdyllVegaLite data:US2 spec:`{
+  width: 500,
+  mark: "circle",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated number of deaths from TB (all forms, excluding HIV)", type: "quantitative", scale: { domain: [0, 2000] }},
+  }
+}` /]
+
+// Visualization 3
+
+China TB Prevalence (1990-2013)
+After seeing a well-developed country statistic of TB we look at a another layer of developed country TB prevalence in another major country, China
+What kind of pattern do we observe here and amount of cases.
+[var name:"year2" value:1990 /]
+
+[derived name:"China" value:`TB.filter(c => (c.Country ==="China" && c.Year === year2))` /]
+
+// [Table data:US /]
+
+[Range value:year2 min:1990 max:2013 /]
+
+[IdyllVegaLite data:China spec:`{
+  width: 500,
+  mark: "point",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated prevalence of TB (all forms)", type: "quantitative", scale: { domain: [0, 2600000] } }
+  }
+}` /]
+
+// Visualization 4
+China Estimated # of deaths from TB : all forms, excluding HIV (1990-2013)
+And now we look at the statistics of estimated deaths from TB for China
+//Estimated number of deaths from TB (all forms, excluding HIV)
+
+[var name:"year3" value:1990 /]
+
+[derived name:"China2" value:`TB.filter(c => (c.Country ==="China" && (c.Year === year3)))` /]
+
+[Range value:year3 min:1990 max:2013 /]
+
+[IdyllVegaLite data:China2 spec:`{
+  width: 500,
+  mark: "circle",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated number of deaths from TB (all forms, excluding HIV)", type: "quantitative", scale: { domain: [0, 300000] }},
+  }
+}` /]
+
+// Visualization 5
+
+India TB Prevalence (1990-2013)
+Now we visualize how the prevalence looks at a developing country, India. The trend we are visually seeing is increasing the less developed we go.
+
+[var name:"year4" value:1990 /]
+
+[derived name:"India" value:`TB.filter(c => (c.Country ==="India" && c.Year === year4))` /]
+
+// [Table data:US /]
+
+[Range value:year4 min:1990 max:2013 /]
+
+[IdyllVegaLite data:India spec:`{
+  width: 500,
+  mark: "point",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated prevalence of TB (all forms)", type: "quantitative", scale: { domain: [0, 4800000] } }
+  }
+}` /]
+
+// Visualization 6
+India Estimated # of deaths from TB : all forms, excluding HIV (1990-2013)
+And also it's estimated number of deaths from TB 
+//Estimated number of deaths from TB (all forms, excluding HIV)
+
+[var name:"year5" value:1990 /]
+
+[derived name:"India2" value:`TB.filter(c => (c.Country ==="India" && (c.Year === year5)))` /]
+
+[Range value:year5 min:1990 max:2013 /]
+
+[IdyllVegaLite data:India2 spec:`{
+  width: 500,
+  mark: "circle",
+  encoding: {
+    x: {field: "Year", type: "quantitative", scale: { domain: [1990, 2013] }},
+    y: {field: "Estimated number of deaths from TB (all forms, excluding HIV)", type: "quantitative", scale: { domain: [0, 500000] }},
+  }
+}` /]
+
+As we can see the going down the ladder of development in a country we have increased prevalence and # of estimated deaths from TB
